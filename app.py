@@ -33,7 +33,7 @@ with app.app_context():
 #endpoint para obtener todos los alumnos
 @app.route('/lecturas',methods=['GET'])
 def get_lecturas():
-    lecturas = db.session.query(Lectura).where(Lectura.modulo == "M1").order_by(Lectura.hora.desc()).limit(50).all()
+    lecturas = db.session.query(Lectura).where(Lectura.modulo == "M1").order_by(Lectura.hora.desc()).first()
     lista = []
     for lectura in lecturas:
         lista.append({
