@@ -33,19 +33,18 @@ with app.app_context():
 #endpoint para obtener todos los alumnos
 @app.route('/lecturas',methods=['GET'])
 def get_lecturas():
-    lecturas = db.session.query(Lectura).where(Lectura.modulo == "M1").order_by(Lectura.hora.desc()).first()
+    lectura = db.session.query(Lectura).where(Lectura.modulo == "M1").order_by(Lectura.hora.desc()).first()
     lista = []
-    for lectura in lecturas:
-        lista.append({
-            'id_lectura': lectura.id_lectura,
-            'modulo': lectura.modulo,
-            'hora': lectura.hora,
-            'temperatura': lectura.temperatura,
-            'humedad': lectura.humedad,
-            'co': lectura.co,
-            'co2': lectura.co2,
-            'amoniaco': lectura.amoniaco
-        })
+    lista.append({
+        'id_lectura': lectura.id_lectura,
+        'modulo': lectura.modulo,
+        'hora': lectura.hora,
+        'temperatura': lectura.temperatura,
+        'humedad': lectura.humedad,
+        'co': lectura.co,
+        'co2': lectura.co2,
+        'amoniaco': lectura.amoniaco
+    })
     return jsonify(lista)
 
 #endpoint para agregar un nuevo alumno
