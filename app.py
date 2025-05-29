@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 from dotenv import load_dotenv
 
@@ -8,6 +9,7 @@ load_dotenv()
 
 #crear instancia
 app = Flask(__name__)
+CORS(app)
 
 #Configuración de la base de datos PostgreSQL
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
